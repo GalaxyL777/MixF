@@ -1,12 +1,15 @@
-# MixF
-The Simulation Code of Propagation-induced Spectro-polarimetric Properties
+MixF Code is A Stokes Parameter Fitting Program Based on Analytical Solutions of Propagation Equations
+The MixF code is a program designed to fit Stokes parameters using analytical solutions of radiative transfer equations (Wang et al. 2025). It supports two plasma regimes for users to choose from:
+1. Cold Plasma – Applicable when γ=kT/mec2≪1γ=kT/mec2≪1.
+2. Hot Plasma – Applicable when γ≫1γ≫1.
+Note: Parameter X should not be excessively large.
 
-The code file Faraday_conversion.py contains two main parts: three types of class and the simulation program.
+Key Features
+Accounts for absorption, Faraday rotation, and Faraday conversion in the plasma medium.
 
-1. The GFR (Generalized Faraday Rotation) class predicts the Q, U, and V behavior when a set of model parameters is given;
-2. The conversion and conversions (no absorption scenario) classes predict the Q, U, and V behavior when a bright polarized radio wave propagates through a magnetized plasma. In conversions_class, we consider a more realistic model in which the magnetized plasma consists of three layers: the foreground medium, the conversion medium, and the background medium;
-3. The likelihood class of Faraday conversion. The main goal of this function is to construct a likelihood function with Gaussian noise, which can be directly used for maximum likelihood estimation and Bayesian inference.
-
-The simulation begins with mock data generated from the GFR class, and then we consider the cold and hot plasma scenarios and fit the mock data. Finally, we plot the mock data and the best-fit model curves.
-
-In conversion_1124A2.py, we employ our model to burst 926 of FRB 20201124A2 (Xu et al. 2022).
+We also provided a simplified version of MixF, which is available when absorption can be neglected (i.e., when total polarization and intensity remain frequency-independent). This version retains only the mixing Faraday term, simplifying the fitting process.
+Since the distance to the plasma medium is typically unknown, we recommend including both a background and a foreground RM layer
+Pre-Fitting Considerations
+Before running MixF, users should estimate the ratio of Faraday rotation to Faraday conversion coefficients. If Faraday rotation dominates significantly, MCMC fitting—considering observational errors—may converge to an unphysical magnetic field strength.
+To mitigate this, we recommend using the RM & CM (Rotation Measure & Conversion Measure) fitting version. Although this version does not directly output magnetic field strength or column density, users can still estimate these quantities using the definitions of RM and CM.
+If you have any further questions or comments, feel free to contact to Weiyang (wywang@ucas.ac.cn) or Xiaohui (liux h@bao.ac.cn)
