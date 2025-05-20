@@ -8,11 +8,13 @@ Note: Parameter X should not be excessively large.
 Key Features
 Accounts for absorption, Faraday rotation, and Faraday conversion in the plasma medium.
 
-We also provided a simplified version of MixF, which is available when absorption can be neglected (i.e., when total polarization and intensity remain frequency-independent). This version retains only the mixing Faraday term, simplifying the fitting process.
-Since the distance to the plasma medium is typically unknown, we recommend including both a background and a foreground RM layer
+We also provided a simplified version of MixF, which is available when absorption can be neglected (i.e., when total polarization remain frequency-independent). This version retains only the mixing Faraday term, simplifying the fitting process.
+Since the distance to the plasma medium is typically unknown, we recommend including both a background and a foreground RM layer.
 
 Pre-Fitting Considerations
 Before running MixF, users should estimate the ratio of Faraday rotation to Faraday conversion coefficients. If Faraday rotation dominates significantly, MCMC fitting—considering observational errors—may converge to an unphysical magnetic field strength.
 To mitigate this, we recommend using the RM & CM (Rotation Measure & Conversion Measure) fitting version. Although this version does not directly output magnetic field strength or column density, users can still estimate these quantities using the definitions of RM and CM.
+
+
 
 If you have any further questions or comments, feel free to contact to Weiyang (wywang@ucas.ac.cn) or Xiaohui (liuxh@bao.ac.cn)
